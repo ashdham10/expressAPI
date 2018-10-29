@@ -28,6 +28,7 @@ router.put("/:id", function (req, res) {
 
 
 router.delete("/:id", function (req, res) {
+    let id = req.params.id;
     chirpStore.DeleteChirp(id);
     res.send('Deleted!');
 });

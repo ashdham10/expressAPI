@@ -8,36 +8,8 @@
     "chirp": "goodbye world"
   },
   "2": {
-    "author": "Bob",
-    "chirp": "heyyyy"
+    "author": "Alan",
+    "chirp": "boo"
   },
-  "3": {
-    "author": "Al",
-    "chirp": "chiiiiiiiiirp"
-  },
-  "4": {
-    "author": "Bob",
-    "chirp": "kjahwfkljewjhflkwehfr"
-  },
-  "5": {
-    "author": "Andrew",
-    "chirp": "dsfgdfgdfg"
-  },
-  "6": {
-    "author": "",
-    "chirp": ""
-  },
-  "7": {
-    "author": "",
-    "chirp": ""
-  },
-  "8": {
-    "author": "",
-    "chirp": ""
-  },
-  "9": {
-    "author": "ash",
-    "chirp": "lalalalalala"
-  },
-  "nextid": 10
+  "nextid": 7
 }

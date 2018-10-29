@@ -15,8 +15,8 @@ let getChirps = () => {
               <h5 class="card-title text-light">${chirp.author} chirped:</h5>
               <p class="card-text text-light">"${chirp.chirp}"</p>
               <p class="card-text text-light">${chirp.id}</p>
-              <button class="edit btn card-btn btn-sm btn-outline-light">Edit</button>
-              <button class="delete btn card-btn btn-sm btn-outline-light data-id="${chirp.id}" onclick="deleteChirp()">Delete</button>
+              <button class="btn card-btn btn-sm btn-outline-light" onclick="editChirp(${chirp.id})" data-toggle="modal" data-target="#exampleModal">Edit</button>
+              <button class="delete btn card-btn btn-sm btn-outline-light" onclick="deleteChirp(${chirp.id})">Delete</button>
             </div>
           </div>
             `);
@@ -40,10 +40,10 @@ getChirps();
        });
     });
     
-    let deleteChirp = () => {
+    let deleteChirp = (id) => {
         console.log('clickedd');
         $.ajax({
-            url: `/api/chirps/${event.target.dataset.id}`,
+            url: `/api/chirps/${id}`,
             type: 'DELETE',
             success: function(result) {
                 console.log('chirp removed');
@@ -53,6 +53,37 @@ getChirps();
             getChirps();
         });
     };
- 
+    
+    let editChirp = (id) => {
+        
+            $('#modalChirpId').text(`Chirp ID: ${id}`);
+        
+            $.get(`/api/chirps/${id}`)
+                .then(data => {
+        
+                    $('#edit-author').val(data.author);
+                    $('#edit-chirp').val(data.chirp);
+                        //user edits
+                    $('#save-button').click(() => {
+        
+                        let editedChirp = {
+                            author: $('#edit-author').val(),
+                            chirp: $('#edit-chirp').val()
+                        };
+        
+                        $.ajax({
+                            url: `/api/chirps/${id}`,
+                            type: 'PUT',
+                            data: editedChirp
+                        })
+                            .then(() => {
+                                $('#chirps').empty();
+                                getChirps();
+                            })
+                            .catch(e => console.log(e));
+                    })
+        
+                })
+            };
 
 

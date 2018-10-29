@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 app.use('/api', apiRouter);
 
-let port = 3000;
+let port = 3001;
 
 app.listen(port, () => {
     console.log('Server listening');
